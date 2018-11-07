@@ -27,6 +27,17 @@ main section.categories-show {
         display: block;
       }
 
+      aside.sold-out {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 10px;
+        background-color: #eee;
+        border-bottom-right-radius: 20px;
+        background-color: red;
+        font-size: 0.8em;
+      }
+
       footer {
         position: absolute;
         bottom: 0;
@@ -51,6 +62,8 @@ main section.categories-show {
         font-size: 0.8em;
       }
 
+
+
       &:hover {
 
         border-color: #999;
@@ -72,5 +85,3 @@ main section.products-show {
     }
   }
 }
-
-
