@@ -5,6 +5,7 @@
   <% end %>
   <header class="page-header">
     <h1>Order #<%= @order.id %></h1>
+    <h3>Email: <%=@order.email%><h3>
   </header>
 
   <h4>Thank you for your order!</h4>
@@ -14,7 +15,6 @@
       <%= render 'order', product: item.product, quantity: item.quantity.to_i %>
     <% end %>
   </div>
-
   <h1>Total: $<%=total %></h1>
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 </section>
