@@ -3,13 +3,13 @@ class UserMailer < ApplicationMailer
 
   def welcome_email(id)
     @user = User.find(id)
-    @url  = 'http://example.com/login'
+    @url  = 'http://buzovastore.com'
     mail(to: @user.email, subject: 'Welcome to My Awesome Site')
   end
 
   def order_confirmation(order)
     @order = order
-    @url  = 'http://example.com/login'
+    @url  = 'http://buzovastore.com'
     mail(to: @order.email, subject: 'Welcome to My Awesome Site')
   end
 end
