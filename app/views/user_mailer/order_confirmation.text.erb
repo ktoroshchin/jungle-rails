@@ -1,0 +1,22 @@
+Welcome to example.com, <%= @order.email %>
+===============================================
+
+<h1>Welcome to example.com, <%= @order.email %></h1>
+     <%total = 0 %>
+      <% @order.line_items.each do |item| %>
+        <% total += item.item_price_cents.to_f/100%>
+      <% end %>
+    <p>
+      YOU ORDER WAS SUCCESSFULLY SUBMITTED,
+      your order:
+      <% @order.line_items.each do  |item| %>
+          <li><%=item.product.name%>
+          Quantity: <%=item.quantity%>
+          Price: <%=item.total_price_cents.to_f/100%></li>
+        <%end%>
+          Total: <%= total%>
+    </p>
+    <p>
+      To login to the site, just follow this link: <%= @url %>.
+    </p>
+    <p>Thanks for joining and have a great day!</p>

@@ -6,18 +6,23 @@ class OrdersController < ApplicationController
 
   def create
     charge = perform_stripe_charge
-    order  = create_order(charge)
+    @order  = create_order(charge)
 
-    if order.valid?
+
+  respond_to do |format|
+    if @order.valid?
+      UserMailer.order_confirmation(@order).deliver_now
+          format.html { redirect_to('/products', notice: 'Your order was submitted') }
+          format.json { render json: @user, status: :created, location: @user }
       empty_cart!
-      redirect_to order, notice: 'Your Order has been placed.'
-    else
-      redirect_to cart_path, flash: { error: order.errors.full_messages.first }
+      # redirect_to @order, notice: 'Your Order has been placed.'
+    # else
+    #   redirect_to cart_path, flash: { error: order.errors.full_messages.first }
     end
-
-  rescue Stripe::CardError => e
-    redirect_to cart_path, flash: { error: e.message }
   end
+    rescue Stripe::CardError => e
+      redirect_to cart_path, flash: { error: e.message }
+    end
 
   private
 
@@ -37,7 +42,7 @@ class OrdersController < ApplicationController
 
   def create_order(stripe_charge)
     order = Order.new(
-      email: params[:stripeEmail],
+      email: current_user.email,
       total_cents: cart_subtotal_cents,
       stripe_charge_id: stripe_charge.id, # returned by stripe
     )
