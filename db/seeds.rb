@@ -20,6 +20,12 @@ unless Rails.env.development?
 end
 
 # Let's do this ...
+User.create!({
+  name: "Cony",
+  email: "cony@gmail.com",
+  password: "c"
+})
+
 
 ## CATEGORIES
 
@@ -131,6 +137,26 @@ cat3.products.create!({
   quantity: 23,
   price: 2_483.75
 })
+
+
+
+## REVIEWS
+
+puts "Re-creating Reviews ..."
+
+# Review.destroy_all
+
+Product.all.each do |product|
+  Review.create!({
+  product_id: product.id,
+  user_id: 1,
+  description: Faker::Hipster.paragraph(4),
+  rating: rand(1..5)
+})
+end
+
+
+
 
 
 puts "DONE!"
