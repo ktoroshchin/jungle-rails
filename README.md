@@ -3,11 +3,11 @@
 A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
 
 ## Final Product
-### Screenshot home page
+### Home page
 !["main page"](https://github.com/ktoroshchin/jungle-rails/blob/master/docs/index.png)
-### Screenshot home page
+### Shopping cart
 !["shopping cart"](https://github.com/ktoroshchin/jungle-rails/blob/master/docs/shopping_cart.png)
-### Screenshot home page
+### Admin product page
 !["Admin_product_page"](https://github.com/ktoroshchin/jungle-rails/blob/master/docs/Admin_product_page.png)
 
 
